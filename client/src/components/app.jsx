@@ -1,4 +1,6 @@
 import React from 'react';
+// import getBuoyData from './getBuoyData'
+import CreateCheck from './CreateCheck';
 
 class App extends React.Component {
   constructor(props) {
@@ -8,7 +10,10 @@ class App extends React.Component {
 
   render() {
     return (
-      <div> Surf Check!</div>
+      <div>
+        Surf Check!
+        <CreateCheck />
+      </div>
     );
   }
 }

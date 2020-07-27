@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/JimKnape/SurfCheck#readme",
   "dependencies": {
+    "moment": "2.27.0",
     "axios": "^0.19.2",
+    "buoy-js": "^1.2.1",
     "express": "^4.17.1",
     "node": "14.5.0",
     "path": "^0.12.7",
