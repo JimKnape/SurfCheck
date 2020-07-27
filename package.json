@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.js",
     "build": "webpack -d --watch",
-    "eslint": "eslint --ext .jsx ."
+    "eslint": "eslint ./ --ext .jsx --ext .js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/JimKnape/SurfCheck#readme",
   "dependencies": {
+    "body-parser": "1.19.0",
+    "mongoose": "5.9.25",
     "moment": "2.27.0",
     "axios": "^0.19.2",
     "buoy-js": "^1.2.1",
