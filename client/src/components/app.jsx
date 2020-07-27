@@ -3,21 +3,23 @@ import axios from 'axios';
 // import getBuoyData from './getBuoyData'
 import CreateCheck from './CreateCheck';
 import Spots from './Spots';
+import SpotReport from './SpotReport';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       spots: [],
-      currentSpot: '',
+      currentSpot: [],
       view: 'main',
     };
+    this.getSpotReports = this.getSpotReports.bind(this);
   }
 
   componentDidMount() {
     this.getSpots();
   }
-
+  
   getSpots() {
     axios.get('/spots')
       .then((res) => {
@@ -30,13 +32,29 @@ class App extends React.Component {
       })
   }
 
+  getSpotReports(event) {
+    const selectedSpot = event.target.value;
+    axios.get(`/spots/${selectedSpot}`)
+      .then((res) => {
+        console.log(res.data)
+        this.setState({
+          currentSpot: res.data,
+          view: selectedSpot
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+
   render() {
-    const { spots } = this.state;
+    const { spots, view, currentSpot } = this.state;
     return (
       <div>
         Surf Check!
+        <Spots spots={spots} getSpotReports={this.getSpotReports}/>
         <CreateCheck />
-        <Spots spots={spots} />
+        <SpotReport view={view} currentSpot={currentSpot} />
       </div>
     );
   }

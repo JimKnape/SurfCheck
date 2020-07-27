@@ -3,19 +3,31 @@ import React from 'react';
 class Spots extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      value: 'Choose Surf Spot',
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    this.setState({
+      value: event.target.value
+    })
+    this.props.getSpotReports(event);
   }
 
   render() {
-    const { spots } = this.props;
+    const { spots, getSpotReports } = this.props;
     return (
       <div className="surfspotlist">
-        Your Surf Spots
-        {spots.map((spot) => (
-          <div key={spot.spotName}>
-            <button>{spot}</button>
-          </div>
-        ))}
+        <h2>Your Surf Spots</h2>
+        <select value={this.state.value} onChange={this.handleChange}>
+          {spots.map((spot) => {
+            return (
+              <option value={spot}>{spot}</option>
+            )
+          })}
+        </select>
       </div>
     );
   }
