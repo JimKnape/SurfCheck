@@ -27,7 +27,6 @@ class CreateCheck extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
     const params = this.state;
     axios.post('/', { params })
       .then(res => console.log(res))
