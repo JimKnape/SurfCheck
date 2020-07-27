@@ -7,10 +7,11 @@ const surfCheckSchema = new mongoose.Schema({
   spotName: String,
   surfRating: String,
   surfNotes: String,
-  },
-  {
-    timestamps: true,
-  },
+},
+{
+  timestamps: true,
+},
+
 );
 
 const SurfCheck = mongoose.model('surfcheck', surfCheckSchema);

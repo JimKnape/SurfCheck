@@ -14,7 +14,17 @@ app.use('/', express.static(dist));
 app.use(bodyParser.json());
 app.use(router);
 
-app.get('/reports/:name', (req, res) => {
+app.get('/spots/', (req, res) => {
+  SurfCheck.find().distinct('spotName')
+    .then((data) => {
+      res.status(200).send(data);
+    })
+    .catch((err) => {
+      res.status(404).send(err);
+    });
+});
+
+app.get('/spots/:name', (req, res) => {
   const { name } = req.params;
   SurfCheck.find({ spotName: name })
     .sort({ createdAt: -1 })
