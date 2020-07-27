@@ -36,7 +36,6 @@ class App extends React.Component {
     const selectedSpot = event.target.value;
     axios.get(`/spots/${selectedSpot}`)
       .then((res) => {
-        console.log(res.data)
         this.setState({
           currentSpot: res.data,
           view: selectedSpot
