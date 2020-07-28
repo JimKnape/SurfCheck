@@ -4,6 +4,7 @@ import axios from 'axios';
 import CreateCheck from './CreateCheck';
 import Spots from './Spots';
 import SpotReport from './SpotReport';
+import SurfMap from './Map';
 
 class App extends React.Component {
   constructor(props) {
@@ -51,9 +52,16 @@ class App extends React.Component {
     return (
       <div>
         Olympic Peninsula Surf Check!
-        <Spots spots={spots} getSpotReports={this.getSpotReports}/>
-        <CreateCheck />
-        <SpotReport view={view} currentSpot={currentSpot} />
+        <div id="spot-selector-container"> 
+          <Spots spots={spots} getSpotReports={this.getSpotReports}/>
+        </div>
+        <div id="map-container" style={{height: `375px`, width: `100%`}}> 
+          <SurfMap />
+        </div>
+        <div id="spotreports-container">
+          <CreateCheck />
+          <SpotReport view={view} currentSpot={currentSpot} />
+        </div>
       </div>
     );
   }
