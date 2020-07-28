@@ -1,12 +1,13 @@
 import React from 'react';
 import moment from 'moment';
+import getBuoyData from './getBuoyData';
 
 class SpotReport extends React.Component {
     constructor(props) {
       super(props);
       this.state = {};
     }
-  
+
     showReport() {
       const {view, currentSpot } = this.props;
       if (view === 'main') {
@@ -67,6 +68,7 @@ class SpotReport extends React.Component {
     }
 
     render() {
+      getBuoyData()
       const { view, currentSpot } = this.props
       return (
         <div>
