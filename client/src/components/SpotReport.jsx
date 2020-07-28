@@ -56,7 +56,7 @@ class SpotReport extends React.Component {
                       <td>{spot.surfNotes}</td>
                       <td>8 ft</td>
                       <td>WNW</td>
-                      <td>8s</td>
+                      <td>8 s</td>
                       <td>4 mph</td>
                       <td>South</td>
                       <td>4.5 ft</td>
