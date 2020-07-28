@@ -4,6 +4,7 @@ import {
   useLoadScript,
   Marker,
   InforWIndow,
+  InfoWindow,
 } from "@react-google-maps/api";
 import key from '../../../mapAPI';
 // import { makeLoadScriptUrl } from '@react-google-maps/api/dist/utils/make-load-script-url';
@@ -30,14 +31,21 @@ const SurfMap = () => {
   });
 
   const [markers, setMarkers] = React.useState([]);
+  const [selected, setSelected] = React.useState(null);
 
   const onMapClick = React.useCallback((event) => {
     setMarkers(current => [...current, {
       lat: event.latLng.lat(),
       lng: event.latLng.lng(),
       time: new Date(),
-    }])
-  })
+      },
+    ]);
+  }, []);
+
+//   const mapRef = React.useRef();
+//   const onMapLoad = React.useCallBack((map) => {
+//     mapRef.current = map;
+//   }, []);
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
@@ -53,9 +61,9 @@ const SurfMap = () => {
         zoom={10} 
         center={center}
         onClick={onMapClick}
+        // onLoad={onMapLoad}
       >
-        {markers.map(marker => {
-          return (
+        {markers.map(marker => (
             <Marker 
               key={marker.time.toISOString()} 
               position={{ lat: marker.lat, lng: marker.lng }}
@@ -65,9 +73,24 @@ const SurfMap = () => {
                 origin: new window.google.maps.Point(0, 0),
                 anchor: new window.google.maps.Point(10, 10),
               }}
-            />
-          )
-        })}
+              onClick={() => {
+                setSelected(marker);
+              }}
+            />  
+        ))}
+        {selected ? (
+        <InfoWindow 
+          position={{ lat: selected.lat, lng: selected.lng }} 
+          onCloseClick={() => {
+            setSelected(null);
+          }}
+        >
+          <div>
+            <h1>
+              Will Put Surf Record Form here
+            </h1>
+          </div>
+        </InfoWindow>) : null}
       </GoogleMap>
     </div>
   )
