@@ -50,7 +50,7 @@ class App extends React.Component {
     const { spots, view, currentSpot } = this.state;
     return (
       <div>
-        Surf Check!
+        Olympic Peninsula Surf Check!
         <Spots spots={spots} getSpotReports={this.getSpotReports}/>
         <CreateCheck />
         <SpotReport view={view} currentSpot={currentSpot} />

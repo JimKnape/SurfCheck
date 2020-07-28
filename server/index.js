@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
+const fs = require('fs');
 
 const SurfCheck = require('../database/SurfCheck.js');
+const { fstat } = require('fs');
 
 const router = express.Router();
 
@@ -37,6 +39,17 @@ app.get('/spots/:name', (req, res) => {
       res.status(404).send(err);
     });
 });
+
+app.get('/buoydata', (req, res) => {
+  fs.readFile('server/SampleBuoyData.txt', "utf-8", (err, data) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(data)
+      res.status(200).send(data)
+    }
+  })
+})
 
 app.post('/', (req, res) => {
   const { params } = req.body;
