@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 
-.map-container {
-  height: 372px;
-  width: 100%;
-  border-width: 10px;
-  color: brown;
-  display: inline-flex;
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
 }

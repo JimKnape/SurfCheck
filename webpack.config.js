@@ -10,9 +10,9 @@ module.exports = {
     filename: 'bundle.js',
     path: DIST_DIR,
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.css'],
   },
   module: {
     rules: [

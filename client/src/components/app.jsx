@@ -5,6 +5,7 @@ import CreateCheck from './CreateCheck';
 import Spots from './Spots';
 import SpotReport from './SpotReport';
 import SurfMap from './Map';
+import '../../../client/dist/style.css';
 
 class App extends React.Component {
   constructor(props) {

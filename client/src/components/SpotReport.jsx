@@ -17,39 +17,36 @@ class SpotReport extends React.Component {
       } else {
         return (
           <div>
-            <table>
+            <table><caption>{`User reports for ${view}`}</caption>
               <thead>
-                <tr>
-                  <th >{`Reports for ${view}`}</th>
-                </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td rowSpan="1"></td>
-                  <th colSpan="3" scope="colgroup">Your Report</th>
-                  <th colSpan="4" scope="colgroup">Cape Flattery Buoy Data</th>
-                  <th colSpan="4" scope="colgroup">Port Angeles Buoy Data</th>
+                  <td rowSpan="2" ></td>
+                  <th colSpan="2" rowSpan="2" scope="colgroup">Your Reports</th>
+                  <th colSpan="5" scope="colgroup">Cape Flattery Buoy Data</th>
+                  <th colSpan="5" scope="colgroup">Port Angeles Buoy Data</th>
                 </tr>
                 <tr>
-                  <td rowSpan="1"></td>
-                  <th colSpan="3" scope="colgroup"></th>
-                  <th colSpan="2" scope="colgroup">Swell Data</th>
+                  <th colSpan="3" scope="colgroup">Swell Data</th>
                   <th colSpan="2" scope="colgroup">Wind Data</th>
-                  <th colSpan="2" scope="colgroup">Swell Data</th>
+                  <th colSpan="3" scope="colgroup">Swell Data</th>
                   <th colSpan="2" scope="colgroup">Wind Data</th>
                 </tr>
                 <tr>
                   <td>Report Date</td>
                   <td>Rating</td>
                   <td>Surf Notes</td>
+                  <td>Height</td>
                   <td>Direction</td>
                   <td>Period</td>
-                  <td>Direction</td>
                   <td>Speed</td>
+                  <td>Direction</td>
+                  <td>Height</td>
                   <td>Direction</td>
                   <td>Period</td>
-                  <td>Direction</td>
                   <td>Speed</td>
+                  <td>Direction</td>
                 </tr>
                 {currentSpot.map((spot, idx) => {
                   return (
@@ -57,6 +54,16 @@ class SpotReport extends React.Component {
                       <td>{moment(spot.createdAt).format('MMMM Do YYYY, h:mm')}</td>
                       <td>{spot.surfRating}</td>
                       <td>{spot.surfNotes}</td>
+                      <td>8 ft</td>
+                      <td>WNW</td>
+                      <td>8s</td>
+                      <td>4 mph</td>
+                      <td>South</td>
+                      <td>4.5 ft</td>
+                      <td>WNW</td>
+                      <td>8 s</td>
+                      <td>O mph</td>
+                      <td>South</td>
                     </tr>
                   )
                 })}
